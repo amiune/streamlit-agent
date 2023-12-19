@@ -7,7 +7,7 @@ import streamlit as st
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 
 llm = OpenAI(openai_api_key=OPENAI_API_KEY, temperature=0, streaming=True)
-tools = load_tools(["llm-math","ddg-search"])
+tools = load_tools(["llm-math","ddg-search"], llm=llm)
 agent = initialize_agent(
     tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=True
 )
